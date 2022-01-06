@@ -10,7 +10,12 @@
 
                 <ion-tab-button tab="tab2" href="/tabs/tab2">
                     <ion-icon :icon="ellipse" />
-                    <ion-label>Toast</ion-label>
+                    <ion-label>Toast (buttons)</ion-label>
+                </ion-tab-button>
+
+                <ion-tab-button tab="tab3" href="/tabs/tab3">
+                    <ion-icon :icon="square" />
+                    <ion-label>Toast (on mount)</ion-label>
                 </ion-tab-button>
             </ion-tab-bar>
         </ion-tabs>

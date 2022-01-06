@@ -2,17 +2,22 @@
     <ion-page>
         <ion-header>
             <ion-toolbar>
-                <ion-title>Toast Controller</ion-title>
+                <ion-title>Toast Controller (buttons)</ion-title>
             </ion-toolbar>
         </ion-header>
         <ion-content :fullscreen="true">
             <ion-header collapse="condense">
                 <ion-toolbar>
-                    <ion-title size="large">Toast Controller</ion-title>
+                    <ion-title size="large">
+                        Toast Controller (buttons)
+                    </ion-title>
                 </ion-toolbar>
             </ion-header>
-            <IonButton expand="block" @click="showToast">
-                Show toast
+            <IonButton expand="block" @click="showToastStatic">
+                Show toast (static)
+            </IonButton>
+            <IonButton expand="block" @click="showToastInitialize">
+                Show toast (initialize)
             </IonButton>
         </ion-content>
     </ion-page>
@@ -39,9 +44,13 @@ export default {
         IonPage,
     },
     methods: {
-        showToast(): void {
+        showToastStatic(): void {
+            ToastComponent.toast();
+        },
+        async showToastInitialize(): Promise<void> {
             const toast = new ToastComponent();
-            toast.toast();
+            await toast.initialize();
+            toast.show();
         },
     },
 };
