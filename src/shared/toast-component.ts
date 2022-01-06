@@ -6,7 +6,7 @@ export class ToastComponent {
     public async initialize(): Promise<void> {
         this.controller = await toastController.create({
             message: 'Hello from show',
-            duration: 3,
+            duration: 1000,
         })
     }
 
@@ -17,8 +17,15 @@ export class ToastComponent {
     public static async toast(): Promise<void> {
         const controller = await toastController.create({
             message: 'Hello from toast',
-            duration: 3,
+            duration: 1000,
         })
         controller.present()
+    }
+
+    public static async create(): Promise<ToastComponent> {
+        const controller = new ToastComponent()
+        await controller.initialize()
+
+        return controller
     }
 }

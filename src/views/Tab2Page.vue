@@ -19,6 +19,9 @@
             <IonButton expand="block" @click="showToastInitialize">
                 Show toast (initialize)
             </IonButton>
+            <IonButton expand="block" @click="showToastCreate">
+                Show toast (create)
+            </IonButton>
         </ion-content>
     </ion-page>
 </template>
@@ -50,6 +53,10 @@ export default {
         async showToastInitialize(): Promise<void> {
             const toast = new ToastComponent();
             await toast.initialize();
+            toast.show();
+        },
+        async showToastCreate(): Promise<void> {
+            const toast = await ToastComponent.create();
             toast.show();
         },
     },
