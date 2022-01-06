@@ -1,0 +1,7 @@
+{
+  "name": "ionic-gh-24503",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue"
+}
