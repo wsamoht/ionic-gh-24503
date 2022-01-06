@@ -1,27 +1,50 @@
 <template>
-  <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>Tab 1</ion-title>
-      </ion-toolbar>
-    </ion-header>
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Tab 1</ion-title>
-        </ion-toolbar>
-      </ion-header>
-    
-      <ExploreContainer name="Tab 1 page" />
-    </ion-content>
-  </ion-page>
+    <ion-page>
+        <ion-header>
+            <ion-toolbar>
+                <ion-title>Loading Component</ion-title>
+            </ion-toolbar>
+        </ion-header>
+        <ion-content :fullscreen="true">
+            <ion-header collapse="condense">
+                <ion-toolbar>
+                    <ion-title size="large">Loading Component</ion-title>
+                </ion-toolbar>
+            </ion-header>
+            <IonButton expand="block" @click="showLoading">
+                Show loading
+            </IonButton>
+        </ion-content>
+    </ion-page>
 </template>
 
 <script lang="ts">
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/vue';
-import ExploreContainer from '@/components/ExploreContainer.vue';
+import {
+    IonButton,
+    IonPage,
+    IonHeader,
+    IonToolbar,
+    IonTitle,
+    IonContent,
+} from "@ionic/vue";
+import { LoadingComponent } from "@/shared/loading-component";
 
-export default  {
-  components: { ExploreContainer, IonHeader, IonToolbar, IonTitle, IonContent, IonPage }
-}
+export default {
+    components: {
+        IonButton,
+        IonHeader,
+        IonToolbar,
+        IonTitle,
+        IonContent,
+        IonPage,
+    },
+    methods: {
+        async showLoading(): Promise<void> {
+            const loading = await LoadingComponent.create({
+                definedText: "Saving",
+            });
+            loading.present();
+        },
+    },
+};
 </script>
